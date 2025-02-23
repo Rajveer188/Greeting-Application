@@ -28,7 +28,7 @@ public class GreetingService {
         } else if (lastName != null) {
             return "Hello, " + lastName;
         } else {
-            return "Hello World";
+            return "Hello World"; 
         }
     }
     //method to save greeting
@@ -55,4 +55,5 @@ public class GreetingService {
         //get all message
         return greetingRepository.findAll();
     }
+  
 }
