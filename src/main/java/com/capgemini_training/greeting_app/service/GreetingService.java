@@ -1,13 +1,22 @@
 package com.capgemini_training.greeting_app.service;
 
+import com.capgemini_training.greeting_app.GreetingAppApplication;
+import com.capgemini_training.greeting_app.model.GreetingEntity;
+import com.capgemini_training.greeting_app.repository.GreetingRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service
 @Component
 public class GreetingService {
+    private GreetingRepository greetingRepository;
     //construction
-    public GreetingService(){}
+    @Autowired
+    public GreetingService(GreetingRepository greetingRepository){
+        //dependency injection
+        this.greetingRepository = greetingRepository;
+    }
     //service for greeting
     public String greet(String firstName, String lastName) {
         if (firstName != null && lastName != null) {
@@ -19,5 +28,20 @@ public class GreetingService {
         } else {
             return "Hello World";
         }
+    }
+    //method to save greeting
+    public GreetingEntity saveGreeting(String id, String firstName, String lastName){
+        String message;
+        if (firstName != null && lastName != null) {
+            message = "Hello, " + firstName + " " + lastName;
+        } else if (firstName != null) {
+            message = "Hello, " + firstName;
+        } else if (lastName != null) {
+            message = "Hello, " + lastName;
+        } else {
+            message = "Hello World";
+        }
+        GreetingEntity greetingEntity = new GreetingEntity(id, message, firstName, lastName);
+        return greetingRepository.save(greetingEntity);
     }
 }
