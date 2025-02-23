@@ -44,8 +44,11 @@ public class GreetingService {
         GreetingEntity greetingEntity = new GreetingEntity(id, message, firstName, lastName);
         return greetingRepository.save(greetingEntity);
     }
+<<<<<<< UC5-Find-Messages
     //method to search message by id
     public GreetingEntity findById(String id){
         return greetingRepository.findById(id).orElse(null);
     }
+=======
+>>>>>>> main
 }
