@@ -20,22 +20,26 @@ public class GreetingController {
 
     //http get method
     @GetMapping("/get")
-    public String getGreeting(){
-        return greetingService.greet();
+    public String getGreeting(@RequestParam(required = false) String firstName,
+                              @RequestParam(required = false) String lastName){
+        return greetingService.greet(firstName, lastName);
     }
     //http put method
     @PutMapping("/put")
-    public String putGreeting(){
-        return greetingService.greet();
+    public String putGreeting(@RequestParam(required = false) String firstName,
+                              @RequestParam(required = false) String lastName){
+        return greetingService.greet(firstName, lastName);
     }
     //http delete method
     @DeleteMapping("/delete")
-    public String deleteGreeting(){
-        return greetingService.greet();
+    public String deleteGreeting(@RequestParam(required = false) String firstName,
+                                 @RequestParam(required = false) String lastName){
+        return greetingService.greet(firstName, lastName);
     }
     //http post method
     @PostMapping("/post")
-    public String postGreeting(){
-        return greetingService.greet();
+    public String postGreeting(@RequestParam(required = false) String firstName,
+                               @RequestParam(required = false) String lastName){
+        return greetingService.greet(firstName, lastName);
     }
 }
