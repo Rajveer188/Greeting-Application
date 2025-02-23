@@ -20,10 +20,9 @@ public class GreetingController {
     }
 
     //http get method
-    @GetMapping("/get")
-    public String getGreeting(@RequestParam(required = false) String firstName,
-                              @RequestParam(required = false) String lastName){
-        return greetingService.greet(firstName, lastName);
+    @GetMapping("/get/{id}")
+    public GreetingEntity getGreeting(@PathVariable String id){
+        return greetingService.findById(id);
     }
     //http put method
     @PutMapping("/put")
