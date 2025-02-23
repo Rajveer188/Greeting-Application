@@ -1,5 +1,6 @@
 package com.capgemini_training.greeting_app.controller;
 
+import com.capgemini_training.greeting_app.model.GreetingEntity;
 import com.capgemini_training.greeting_app.service.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -38,8 +39,9 @@ public class GreetingController {
     }
     //http post method
     @PostMapping("/post")
-    public String postGreeting(@RequestParam(required = false) String firstName,
-                               @RequestParam(required = false) String lastName){
-        return greetingService.greet(firstName, lastName);
+    public GreetingEntity postGreeting(@RequestParam(required = false) String firstName,
+                                       @RequestParam(required = false) String lastName,
+                                       @RequestParam String id){
+        return greetingService.saveGreeting(id, firstName, lastName);
     }
 }
