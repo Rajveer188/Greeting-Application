@@ -3,6 +3,7 @@ package com.capgemini_training.greeting_app.controller;
 import com.capgemini_training.greeting_app.model.GreetingEntity;
 import com.capgemini_training.greeting_app.service.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,9 +35,11 @@ public class GreetingController {
     }
     //http delete method
     @DeleteMapping("/delete")
-    public String deleteGreeting(@RequestParam(required = false) String firstName,
-                                 @RequestParam(required = false) String lastName){
-        return greetingService.greet(firstName, lastName);
+    public ResponseEntity<String>  deleteGreeting(@RequestParam String id){
+        //delete message
+        greetingService.deleteGreeting(id);
+
+        return ResponseEntity.ok("message deleted successfully");
     }
     //http post method
     @PostMapping("/post")
