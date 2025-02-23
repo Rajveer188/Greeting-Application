@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Component
 public class GreetingService {
@@ -26,7 +28,7 @@ public class GreetingService {
         } else if (lastName != null) {
             return "Hello, " + lastName;
         } else {
-            return "Hello World";
+            return "Hello World"; 
         }
     }
     //method to save greeting
@@ -44,11 +46,14 @@ public class GreetingService {
         GreetingEntity greetingEntity = new GreetingEntity(id, message, firstName, lastName);
         return greetingRepository.save(greetingEntity);
     }
-<<<<<<< UC5-Find-Messages
     //method to search message by id
     public GreetingEntity findById(String id){
         return greetingRepository.findById(id).orElse(null);
     }
-=======
->>>>>>> main
+    // Method to list all greetings
+    public List<GreetingEntity> getAllGreetings() {
+        //get all message
+        return greetingRepository.findAll();
+    }
+  
 }
